@@ -1,0 +1,48 @@
+# Site settings
+name: keithbuhler.com
+email: 
+author: Keith Buhler
+url: http://www.keithbuhler.com
+resume_site: 
+github: keithbuhler
+baseurl: "/blog7-lessmore"
+description: Philosopher, Classical Educator, Writer
+meta_description: 
+motto: Know yourself. 
+banner: This is a banner, man. 
+
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
+paginate: 10
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
+github_username: keithbuhler
+highlighter: rouge
+
+# Gems
+
+gems: 
+  - [jekyll-paginate]
+  - [jekyll-sitemap]
+  - [jekyll-feed]
+  - [jekyll-gist]
+  - [jekyll-archives]
+  
+# Build settings
+markdown: kramdown
+
+baidu_analysis: 
+
+FB:
+  comments :
+    provider : 
+    duoshuo:
+        short_name : 
+    disqus :
+        short_name : thebuhlerreport
+    # facebook :
+    #   appid : 123
+    #   num_posts: 5
+    #   width: 580
+    #   colorscheme: light

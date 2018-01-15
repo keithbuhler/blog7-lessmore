@@ -1,0 +1,104 @@
+<p><img src="http://www.scarymommy.com/wp-content/uploads/2014/10/you-your-wall-street-boyfriend-24-hours-0.jpg" width="400" height="380" /></p>
+
+<p>Since I started doing my website with Jekyll, I’ve started writing <em>everything</em> in Markdown – <a href="https://raw.githubusercontent.com/keithbuhler/keithbuhler.github.io/master/_papers/hegel-paper.md">papers</a>, journals, <a href="/syllabus200">syllabi</a>, and of course web pages. <a href="http://www.markdowntutorial.com/">Markdown</a> is a Babelfish in that it can speak any language, including HTML.</p>
+
+<p>What <em>can’t</em> it do? Can it replace Powerpoint?</p>
+
+<p><img src="https://media.giphy.com/media/l0MYHEI0xktKCVjri/giphy.gif" alt="thumbs up" /></p>
+
+<p>Sure can.</p>
+
+<!---more-->
+
+<p>Ever since Google released <a href="https://en.wikipedia.org/wiki/Google_Docs,_Sheets,_Slides_and_Forms">Google Slides in 2012</a>, I’ve used it for creating classroom presentations. I never liked “Powerpoint” much. Slides is intuitive, simple, web-aware, and cloud-based (so no need for thumb drives).</p>
+
+<p>However, there is a new game in town. HTML Slideshows. Check out my first <a href="http://www.keithbuhler.com/slideshows/business1intro#/">HTML slideshow here!</a></p>
+
+<p>If you host a site on <a href="http://github.com">Github</a> using Jekyll, you can create slideshows and publish them to the web instantly. It’s call <a href="http://dansheffler.com/presentations/#/">Reveal</a>. <a href="https://github.com/hakimel/reveal.js/">Hakim El Hattab created it. Fork it here.</a> Reveal takes a bit of simple programming.</p>
+
+<p>To be honest, it took me most of the morning to get it installed and working correctly. The section dividers were the hard part for me; I had all sorts of errors. Either the sections all lumped together, or there were dangling &lt;section&gt; tags on every slide.</p>
+
+<p>After some troubleshooting, and copying successfully functioning shows, <a href="https://raw.githubusercontent.com/keithbuhler/keithbuhler.github.io/master/slideshows/business1intro.md">I figured it out.</a></p>
+
+<p>If you don’t want to do the code, you can cut the chase and use the Slides visual editor as well <a href="https://slides.com/">here.</a> It’s a bit more work than Google Slides but more beautiful and customizable.</p>
+
+<h2 id="how-to-do-it">How to do it</h2>
+
+<p>Since I want to use Markdown, I had to install <a href="https://github.com/chjj/marked">Marked</a> as well. Now, I start the slideshow like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+title: Introduction
+layout: slide
+---
+
+&lt;section data-markdown&gt;
+
+# Heading
+
+-Content, etc.
+
+&lt;/section&gt;
+</code></pre>
+</div>
+
+<p>The “section data-markdown” functions as a normal “section” tag, but at compile tells Jekyll to read all the contents as Markdown (and hence convert them to HTML).</p>
+
+<p>By default, each section is a slide. If I start a new section, then the slideshow will be horizontal. That’s good enough to do almost all I need!</p>
+
+<h2 id="vertical-slides">Vertical Slides</h2>
+
+<p>However, because I wanted to make things harder, I tried to copy Dan Sheffler’s vertical slides. This gives you a kind of “Master slide” and “Sub-slide” hierarchy. The hierarchical approach is better than the “flat” approach if you have longer slideshows <a href="http://www.keithbuhler.com/slideshows/business1intro#/">(I do a whole week at a time)</a> or if you just want to control the organization.</p>
+
+<p>If I want to do vertical slides, I needed to nest the sections.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;section&gt;               &lt;!--Begin Vertical set--&gt;
+&lt;section data-markdown&gt; &lt;!--Begin Intro Slide 1--&gt;
+
+# Business ethics
+
+&lt;/section&gt;              &lt;!--End Intro slide 1--&gt;
+&lt;section data-markdown&gt;  &lt; Begin Slide 2&gt;
+
+## Welcome!
+* 3x5 cards
+* Names
+* Stories
+
+&lt;/section&gt;      &lt; End Slide 2&gt;
+&lt;/section&gt;      &lt;End Vertical Set&gt;
+</code></pre>
+</div>
+
+<p>Finally, I tried to put a background image on the FIRST “header” slide but NOT on the nested vertical slides. To do that with Reveal is very easy:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;section data-background="url or path"&gt;
+</code></pre>
+</div>
+
+<p>Since I am also using “data-markdown” I found they could both be included in the section tag.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;section data-background="http://www.scarymommy.com/wp-content/uploads/2014/10/you-your-wall-street-boyfriend-24-hours-0.jpg" data-markdown&gt;
+</code></pre>
+</div>
+
+<p>So the finished product looks like this</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;section&gt;&lt;!--Vertical set begin--&gt;
+&lt;section data-background="http://www.scarymommy.com/wp-content/uploads/2014/10/you-your-wall-street-boyfriend-24-hours-0.jpg" data-markdown&gt;&lt;!--Intro slide begin--&gt;
+
+# Business ethics
+
+&lt;/section&gt; &lt;!--Intro slide end--&gt;
+&lt;section data-markdown&gt;  &lt;!---Rest of slideshow--&gt;
+
+## Welcome!
+
+* 3x5 cards
+* Names
+* Stories
+
+&lt;/section&gt;&lt;section data-markdown&gt;
+</code></pre>
+</div>
+
+<p>Now I’ve got to create some more slideshows!</p>
